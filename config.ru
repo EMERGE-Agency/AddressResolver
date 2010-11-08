@@ -1,3 +1,3 @@
 require 'main.rb'
 
-Run Sinatra::Application
+Run Main
