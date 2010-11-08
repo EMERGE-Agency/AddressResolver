@@ -15,9 +15,8 @@ class Test_Main < Test::Unit::TestCase
   end
 
   def test_resolve_a_record_to_ip
-    post '/resolve_a_record_to_ip', {:host_name => 'honey.com'}
+    post '/resolve_a_record_to_ip', {:host_name => 'honey.com'}.to_json
     result = JSON.parse last_response.body
-    puts result
     assert result['ip_address']
   end
 end
