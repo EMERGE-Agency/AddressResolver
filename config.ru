@@ -1,3 +1,3 @@
 require 'main'
 
-Run Main
+run Main
