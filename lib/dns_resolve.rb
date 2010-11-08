@@ -6,7 +6,7 @@ class DNSResolve
     result = ""
     begin
       result = dns.getaddress(name).to_s      
-    rescue ResolvError => e
+    rescue DNSResolve::ResolvError => e
     end
     result
   end
