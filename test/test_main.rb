@@ -11,7 +11,7 @@ ENV['RACK_ENV'] = 'test'
 class Test_Main < Test::Unit::TestCase
   include Rack::Test::Methods
   def app
-     Sinatra::Application
+     Main
   end
 
   def test_resolve_a_record_to_ip
