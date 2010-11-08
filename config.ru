@@ -1,3 +1,3 @@
-require 'main.rb'
+require 'main'
 
 Run Main
