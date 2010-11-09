@@ -5,10 +5,12 @@ require 'lib/dns_resolve'
 
 post '/resolve_a_record_to_ip' do
   dnsresolve = DNSResolve.new
-  result = JSON.parse(request.body.read) 
-  
-  result = dnsresolve.resolve_a_record_to_IP(result['host_name'])
+  result = {}
+  JSON.parse(request.body.read).each_pair do |key, value|
+    puts "#{key}-#{value}"
+    result.store(key, dnsresolve.resolve_a_record_to_IP(value))
+  end
   
   content_type :json
-  {:ip_address => result}.to_json
+  result.to_json
 end
