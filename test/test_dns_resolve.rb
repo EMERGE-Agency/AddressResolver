@@ -17,6 +17,6 @@ class Test_DNS_Resolve < Test::Unit::TestCase
   
   def test_resolve_a_record_to_IP_bad_domain
     result = @dnsresolve.resolve_a_record_to_IP("www.hgjdkdldfaelkdfaer.com")
-    assert_nil result
+    assert_equal "", result
   end
 end
