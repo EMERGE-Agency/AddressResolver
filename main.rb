@@ -35,14 +35,16 @@ post '/get_page_response_code' do
     http_session = Net::HTTP.new(uri.host, uri.port)
     http_session.use_ssl = true if uri.port == 443
     begin
+      Timeout::timeout(2){
       http_session.start{|http|
         res = http.request_head('/?e=actionNotFoundBecauseItDontExist')
-      }
+      }}
       result[value] = res.code
-    rescue Exception => e
+    rescue Timeout::Error => e
       result[value] = ""
     end
   end
+  
   content_type :json
   result.to_json
 end
