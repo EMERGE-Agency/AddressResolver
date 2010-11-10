@@ -14,8 +14,9 @@ post '/resolve_a_record_to_ip' do
       ip = ""
       begin
         Timeout::timeout(2){ ip = dnsresolve.resolve_a_record_to_IP(value)}        
-      rescue Timeout::Error
+      rescue Timeout::Error => e
         ip = ""
+        puts e
       end
       result.store(value, ip)
     }.join
