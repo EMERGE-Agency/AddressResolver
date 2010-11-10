@@ -31,7 +31,7 @@ post '/get_page_response_code' do
   result = {}
   JSON.parse(request.body.read).each do |value|
     res = ""
-    uri = URI.parse("http://www.#{value}")
+    uri = URI.parse("http://#{value}")
     http_session = Net::HTTP.new(uri.host, uri.port)
     http_session.use_ssl = true if uri.port == 443
     http_session.start{|http|

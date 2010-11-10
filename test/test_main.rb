@@ -27,7 +27,7 @@ class Test_Main < Test::Unit::TestCase
     post '/get_page_response_code', ['honey.com', 'emergeinteractive.com'].to_json
     result = JSON.parse last_response.body
     assert result.has_key?('honey.com') && result.has_key?('emergeinteractive.com')
-    assert result['honey.com'] == '404' && result['emergeinteractive.com'] == '404'
+    assert  result['honey.com'] != '200' && result['emergeinteractive.com'] != '200'
   end
   
   def test_http_syntax
