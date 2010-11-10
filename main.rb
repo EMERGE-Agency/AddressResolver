@@ -40,6 +40,8 @@ post '/get_page_response_code' do
         res = http.request_head('/?e=actionNotFoundBecauseItDontExist')
       }}
       result[value] = res.code
+    rescue Timeout::Error => e
+      result[value] = 'timeout'
     rescue Exception => e
       result[value] = ""
     end
