@@ -35,7 +35,7 @@ post '/get_page_response_code' do
     http_session = Net::HTTP.new(uri.host, uri.port)
     http_session.use_ssl = true if uri.port == 443
     http_session.start{|http|
-      res = http.head('/?e=actionNotFoundBecauseItDontExist')
+      res = http.request_head('/?e=actionNotFoundBecauseItDontExist')
     }
     result[value] = res.code
   end
