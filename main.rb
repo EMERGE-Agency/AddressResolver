@@ -9,6 +9,7 @@ post '/resolve_a_record_to_ip' do
   result = {}
   threads = []
   JSON.parse(request.body.read).each do |value|
+    puts "Start #{value}";
     threads << Thread.new{
       puts "#{value}";
       ip = ""
@@ -21,6 +22,7 @@ post '/resolve_a_record_to_ip' do
       end
       result.store(value, ip)
     }.join
+    puts "End #{value}";
   end
   
   content_type :json
